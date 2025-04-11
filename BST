@@ -1,0 +1,38 @@
+class Node:
+    def __init__(self,data):
+        self.val=data
+        self.left=None
+        self.right=None
+def createBst(arr):#6,1,0,5,7,8,4
+    root=None
+    for data in arr:#8
+        if root==None:
+            root=Node(data)
+        else:
+            temp=root
+            while(True):
+                if data<temp.val:
+                    if(temp.left):
+                        temp=temp.left
+                    else:
+                        temp.left=Node(data)
+                        break
+                elif data>temp.val:
+                    if temp.right:
+                        temp=temp.right
+                    else:
+                        temp.right=Node(data)
+                        break
+    return root
+def inorder(root):
+    if root==None:
+        return
+    inorder(root.left)
+    print(root.val,end=" ")
+    inorder(root.right)
+    
+arr=list(map(int,input("enter:").split()))
+root=createBst(arr)
+inorder(root)
+    
+    
