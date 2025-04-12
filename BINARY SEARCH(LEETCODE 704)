@@ -1,0 +1,17 @@
+def binarySearch(arr,tar):
+    n=len(arr)
+    l=0
+    r=n-1
+    while(l<n and r>0):
+        mid=(l+r)//2
+        if arr[mid]==tar:
+            return mid
+        elif arr[mid]<tar:
+            l=mid+1
+        else:
+            r=mid-1
+    return -1
+
+arr=list(map(int,input().split()))
+tar=int(input("enter:"))
+print(binarySearch(arr,tar))
