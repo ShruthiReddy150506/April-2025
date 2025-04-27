@@ -1,0 +1,19 @@
+from collections import deque
+def sliding_window(nums,k):
+    n=len(nums)
+    res=[]
+    dq=deque()
+    for i in range(n):
+        if len(dq)>0 and dq[0]<i-k+1:
+            dq.popleft()
+        while len(dq)>0 and nums[dq[-1]]<nums[i]:
+            dq.pop()
+        dq.append(i)
+        if i>=k-1:
+            res.append(nums[dq[0]])
+    return res
+    
+
+nums=list(map(int,input("enter:").split()))
+k=int(input("enter:"))
+print(sliding_window(nums,k))
